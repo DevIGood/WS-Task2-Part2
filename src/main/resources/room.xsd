@@ -1,0 +1,88 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://localhost/hotel/room"
+           targetNamespace="http://localhost/hotel/room"
+           elementFormDefault="qualified">
+
+    <xs:element name="getRoomRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="roomNumber" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRoomResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="roomNumber" type="tns:room" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="insertRoomRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="room" type="tns:room" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="insertRoomResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateRoomRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="room" type="tns:room" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateRoomResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteRoomRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteRoomResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element type="xs:string" name="statusCode"/>
+            <xs:element type="xs:string" name="message"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="room">
+        <xs:sequence>
+            <xs:element name="roomNumber" type="xs:int" />
+            <xs:element name="roomType" type="xs:string" />
+            <xs:element name="bedType" type="xs:string" />
+            <xs:element name="isFree" type="xs:boolean" />
+            <xs:element name="cost" type="xs:double" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:int"/>
+    </xs:complexType>
+
+</xs:schema>
